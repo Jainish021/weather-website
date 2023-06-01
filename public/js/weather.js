@@ -19,9 +19,6 @@ weatherForm.addEventListener("submit", (e) => {
     const uv_index = document.getElementById("uv_index")
     const visibility = document.getElementById("visibility")
     message1.textContent = "Loading..."
-    // weather_icon.src = ""
-    // temprature.textContent = ""
-    // feelslike.textContent = ""
 
     fetch("/weather?address=" + location).then((response) => {
         response.json().then((data) => {
