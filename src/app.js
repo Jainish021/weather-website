@@ -23,14 +23,14 @@ hbs.registerPartials(partialsPath)
 app.get("", (req, res) => {
     res.render('index', {
         title: "Weather",
-        name: "Jainish"
+        name: "Jainish Adesara"
     })
 })
 
 app.get("/about", (req, res) => {
     res.render("about", {
         title: "About",
-        name: "Jainish"
+        name: "Jainish Adesara"
     })
 })
 
@@ -38,7 +38,7 @@ app.get("/help", (req, res) => {
     res.render("help", {
         helpText: "This is a help page.",
         title: "Help",
-        name: "Jainish"
+        name: "Jainish Adesara"
     })
 })
 
@@ -55,7 +55,7 @@ app.get('/weather', (req, res) => {
                 error: error
             })
         } else {
-            forecast(latitude, longitude, (error, { temprature, feelslike, forecast }) => {
+            forecast(latitude, longitude, (error, { temprature, feelslike, humidity, precip, weather_icon, weather_description, wind_speed, wind_dir, pressure, uv_index, visibility }) => {
                 if (error) {
                     return res.send({
                         error: error
@@ -63,10 +63,18 @@ app.get('/weather', (req, res) => {
                 }
 
                 res.send({
-                    location: location,
-                    temprature: temprature,
-                    feelslike: feelslike,
-                    forecast
+                    location,
+                    temprature,
+                    feelslike,
+                    humidity,
+                    precip,
+                    weather_icon,
+                    weather_description,
+                    wind_speed,
+                    wind_dir,
+                    pressure,
+                    uv_index,
+                    visibility
                 })
             })
         }
@@ -77,7 +85,7 @@ app.get("/help/*", (req, res) => {
     res.render("404", {
         title: "404",
         errorMessage: "Help article not found.",
-        name: "Jainish"
+        name: "Jainish Adesara"
     })
 })
 
@@ -85,7 +93,7 @@ app.get("*", (req, res) => {
     res.render("404", {
         title: "404",
         errorMessage: "Page not found",
-        name: "Jainish"
+        name: "Jainish Adesara"
     })
 })
 
