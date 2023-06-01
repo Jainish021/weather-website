@@ -4,8 +4,8 @@ const search = document.querySelector("input")
 weatherForm.addEventListener("submit", (e) => {
     e.preventDefault()
     const location = search.value
-    const content = document.getElementsByClassName("d-none")
-    console.log(content[0])
+    const content = document.getElementById("main_content")
+    console.log(content)
     const message1 = document.getElementById("message1")
     const weather_icon = document.getElementById("weather_icon")
     const temprature = document.getElementById("temprature")
@@ -19,7 +19,9 @@ weatherForm.addEventListener("submit", (e) => {
     const uv_index = document.getElementById("uv_index")
     const visibility = document.getElementById("visibility")
     message1.textContent = "Loading..."
-    weather_icon.src = ""
+    // weather_icon.src = ""
+    // temprature.textContent = ""
+    // feelslike.textContent = ""
 
     fetch("/weather?address=" + location).then((response) => {
         response.json().then((data) => {
@@ -27,10 +29,11 @@ weatherForm.addEventListener("submit", (e) => {
                 message1.textContent = data.error
             } else {
                 message1.textContent = data.location
-                content[0].className = content[0].className.replace("d-none", "d-block")
+                if (content.className === "d-none") {
+                    content.className = content.className.replace("d-none", "d-block")
+                }
                 weather_icon.className = "img-thumbnail w-5"
                 weather_icon.src = data.weather_icon
-                message1.textContent = data.location
                 temprature.textContent = data.temprature + "F"
                 feelslike.textContent = data.feelslike + "F"
                 humidity.textContent = data.humidity + "%"
