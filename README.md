@@ -1,3 +1,3 @@
-# weather-website
-Visit the following link to see the deployed application
+# Weather Website
+Visit the following link to see the deployed application<br>
 https://jainish-weather-application.herokuapp.com/
